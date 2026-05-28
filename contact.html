@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Kavalan Digital</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0d1f3c;
+    --navy-mid: #1a3358;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f4ed;
+    --cream-dark: #ede8df;
+    --text-dark: #0d1f3c;
+    --text-mid: #3d5478;
+    --text-muted: #7a8fa8;
+    --white: #ffffff;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,31,60,0.97); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 0 2.5rem; display: flex; align-items: center;
+    justify-content: space-between; height: 64px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 0.875rem; font-weight: 400; letter-spacing: 0.04em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy) !important;
+    padding: 0.45rem 1.2rem; border-radius: 2px; font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--navy); padding: 9rem 2.5rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,168,76,0.8) 39px, rgba(201,168,76,0.8) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,168,76,0.8) 39px, rgba(201,168,76,0.8) 40px);
+  }
+  .page-hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+  .page-eyebrow {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .page-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .page-hero h1 {
+    font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 400; color: var(--white); line-height: 1.15;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold-light); }
+
+  /* MAIN CONTENT */
+  .contact-section { padding: 6rem 2.5rem; background: var(--cream); }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  }
+
+  /* FORM */
+  .form-block h2 {
+    font-family: var(--serif); font-size: 1.8rem; font-weight: 400;
+    color: var(--navy); margin-bottom: 0.75rem;
+  }
+  .form-block p {
+    font-size: 0.95rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 2.5rem;
+  }
+
+  .form-group { margin-bottom: 1.5rem; }
+  .form-group label {
+    display: block; font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-mid); margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 0.85rem 1rem;
+    border: 1px solid var(--cream-dark); border-radius: 2px;
+    font-family: var(--sans); font-size: 0.95rem;
+    color: var(--text-dark); background: var(--white);
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+  .form-group select { appearance: none; cursor: pointer; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .btn-submit {
+    background: var(--navy); color: var(--white);
+    border: none; padding: 1rem 2.5rem;
+    font-family: var(--sans); font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border-radius: 2px; cursor: pointer;
+    transition: background 0.2s, transform 0.15s; width: 100%;
+    margin-top: 0.5rem;
+  }
+  .btn-submit:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+  .form-note {
+    font-size: 0.8rem; color: var(--text-muted);
+    text-align: center; margin-top: 1rem; line-height: 1.6;
+  }
+
+  /* SUCCESS MESSAGE */
+  .success-msg {
+    display: none; background: var(--white);
+    border: 1px solid var(--cream-dark); border-radius: 4px;
+    padding: 2rem; text-align: center; margin-top: 1rem;
+  }
+  .success-msg .check {
+    font-size: 2rem; margin-bottom: 1rem; display: block;
+  }
+  .success-msg h3 {
+    font-family: var(--serif); font-size: 1.4rem;
+    color: var(--navy); margin-bottom: 0.5rem;
+  }
+  .success-msg p { font-size: 0.9rem; color: var(--text-mid); }
+
+  /* INFO BLOCK */
+  .info-block { display: flex; flex-direction: column; gap: 2rem; }
+
+  .info-card {
+    background: var(--white); border: 1px solid var(--cream-dark);
+    border-radius: 4px; padding: 2rem;
+  }
+  .info-card-label {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+  }
+  .info-card h3 {
+    font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+    color: var(--navy); margin-bottom: 1rem;
+  }
+  .info-item {
+    display: flex; gap: 0.75rem; margin-bottom: 0.75rem;
+    font-size: 0.9rem; color: var(--text-mid); line-height: 1.6;
+  }
+  .info-item:last-child { margin-bottom: 0; }
+  .info-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+  .team-card { background: var(--navy); border-radius: 4px; padding: 2rem; }
+  .team-card .info-card-label { color: var(--gold); }
+  .team-member {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 1rem; margin-bottom: 1rem;
+  }
+  .team-member:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .team-member-name {
+    font-size: 0.95rem; font-weight: 500; color: var(--white); margin-bottom: 0.2rem;
+  }
+  .team-member-role { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-bottom: 0.4rem; }
+  .team-member-email {
+    font-size: 0.82rem; color: var(--gold-light); text-decoration: none;
+  }
+  .team-member-email:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    background: #080f1e; padding: 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.35); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">
+    <img src="logo-white.png" alt="Kavalan Digital" style="height:38px; width:auto; display:block;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="markets.html">Our Reach</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <p class="page-eyebrow">Contact</p>
+    <h1>Let's talk about<br><em>your goals in Asia.</em></h1>
+  </div>
+</div>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <div class="form-block">
+        <h2>Send us a message</h2>
+        <p>Tell us about your institution and what you're trying to achieve. We'll get back to you within one business day.</p>
+
+        <form id="contact-form" action="https://formspree.io/f/inquiry@envisionrecruit.com" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First name</label>
+              <input type="text" id="first-name" name="first_name" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last name</label>
+              <input type="text" id="last-name" name="last_name" placeholder="Smith" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" placeholder="jane@university.edu" required>
+          </div>
+
+          <div class="form-group">
+            <label for="institution">Institution / Organisation</label>
+            <input type="text" id="institution" name="institution" placeholder="University of Example">
+          </div>
+
+          <div class="form-group">
+            <label for="interest">I'm interested in</label>
+            <select id="interest" name="interest">
+              <option value="">Select a service...</option>
+              <option value="media-buy">Strategic Media Buy</option>
+              <option value="newsletter">Newsletter Campaigns</option>
+              <option value="social-media">Social Media Presence</option>
+              <option value="events">Event Hosting</option>
+              <option value="in-country">In-Country Support</option>
+              <option value="multiple">Multiple Services</option>
+              <option value="not-sure">Not sure yet — need advice</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="market">Target market</label>
+            <select id="market" name="market">
+              <option value="">Select a market...</option>
+              <option value="taiwan">Taiwan</option>
+              <option value="vietnam">Vietnam</option>
+              <option value="cambodia">Cambodia</option>
+              <option value="myanmar">Myanmar</option>
+              <option value="thailand">Thailand</option>
+              <option value="multiple">Multiple markets</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us a bit about your institution and what you're hoping to achieve..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Send Message</button>
+          <p class="form-note">We typically respond within one business day (Taiwan time, UTC+8).</p>
+        </form>
+
+        <div class="success-msg" id="success-msg">
+          <span class="check">✓</span>
+          <h3>Message sent!</h3>
+          <p>Thank you for reaching out. We'll be in touch within one business day.</p>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="info-block">
+
+        <div class="info-card">
+          <p class="info-card-label">Taiwan Headquarters</p>
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <span>11F, No. 178, Sec 1, Keelung Rd, Taipei, Taiwan</span>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <span>+886-2-2764-6595 ext 327</span>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">✉️</span>
+            <a href="mailto:inquiry@envisionrecruit.com" style="color: var(--text-mid); text-decoration: none;">inquiry@envisionrecruit.com</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <p class="info-card-label">Vietnam Office</p>
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <span>R801.3, 57-59 Ho Tung Mau, Dist. 1, Ho Chi Minh City, Vietnam</span>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <span>+84 8 7302 2258</span>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <p class="info-card-label">Core Team</p>
+          <div class="team-member">
+            <p class="team-member-name">Mark Hsu</p>
+            <p class="team-member-role">Founder & CEO</p>
+            <a href="mailto:mark@envisionrecruit.com" class="team-member-email">mark@envisionrecruit.com</a>
+          </div>
+          <div class="team-member">
+            <p class="team-member-name">Tina Chuang</p>
+            <p class="team-member-role">Marketing Director</p>
+            <a href="mailto:tinachuang@envisionrecruit.com" class="team-member-email">tinachuang@envisionrecruit.com</a>
+          </div>
+          <div class="team-member">
+            <p class="team-member-name">Tracy Nguyen</p>
+            <p class="team-member-role">Country Manager, Vietnam</p>
+            <a href="mailto:tracy@envisionrecruit.com" class="team-member-email">tracy@envisionrecruit.com</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="logo-white.png" alt="Kavalan Digital" style="height:32px; width:auto; opacity:0.6;">
+  <span class="footer-copy">© 2025 Kavalan Digital (formerly EnvisionRecruit). All rights reserved.</span>
+  <nav class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+  </nav>
+</footer>
+
+<script>
+  // Simple form handling — shows success message on submit
+  // Note: for real form submission, sign up at formspree.io and replace the action URL
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('success-msg');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    form.style.display = 'none';
+    successMsg.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
