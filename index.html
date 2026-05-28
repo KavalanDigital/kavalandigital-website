@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kavalan Digital — Education Marketing in Asia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1f3c;
+    --navy-mid: #1a3358;
+    --navy-light: #243f6a;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f4ed;
+    --cream-dark: #ede8df;
+    --text-dark: #0d1f3c;
+    --text-mid: #3d5478;
+    --text-muted: #7a8fa8;
+    --white: #ffffff;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    font-weight: 400;
+    color: var(--text-dark);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13, 31, 60, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 0.45rem 1.2rem;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    color: var(--navy) !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: 
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,168,76,0.8) 39px, rgba(201,168,76,0.8) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,168,76,0.8) 39px, rgba(201,168,76,0.8) 40px);
+  }
+
+  .hero-content {
+    padding: 10rem 3rem 6rem 5rem;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 4vw, 3.8rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    max-width: 440px;
+    margin-bottom: 2.75rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  .hero-visual {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 3rem 6rem 2rem;
+  }
+
+  .hero-map-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .map-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .market-list { list-style: none; }
+
+  .market-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    animation: fadeSlideIn 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .market-item:last-child { border-bottom: none; }
+
+  .market-item:nth-child(1) { animation-delay: 0.3s; }
+  .market-item:nth-child(2) { animation-delay: 0.45s; }
+  .market-item:nth-child(3) { animation-delay: 0.6s; }
+  .market-item:nth-child(4) { animation-delay: 0.75s; }
+  .market-item:nth-child(5) { animation-delay: 0.9s; }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateX(12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .market-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+  }
+
+  .market-region {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .market-name {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--gold-light);
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+    display: block;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--gold);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0.65rem 0;
+  }
+
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 28s linear infinite;
+  }
+
+  .marquee-track span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin: 0 2.5rem;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 0; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.9rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--navy-mid);
+  }
+
+  .section-body {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 540px;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 3rem;
+    color: white;
+  }
+
+  .about-card-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: var(--gold-light);
+  }
+
+  .about-card p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1rem;
+  }
+
+  .about-accent {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    opacity: 0.25;
+    z-index: 0;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--cream-dark);
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 4rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .service-card:hover { background: var(--cream); }
+
+  .service-card:nth-child(4),
+  .service-card:nth-child(5) {
+    /* bottom row — make them wider */
+  }
+
+  .service-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--cream-dark);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    transition: color 0.2s;
+  }
+
+  .service-card:hover .service-num { color: var(--gold); }
+
+  .service-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-price {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-transform: uppercase;
+    border-top: 1px solid var(--cream-dark);
+    padding-top: 1rem;
+    margin-top: auto;
+  }
+
+  /* bottom row spans */
+  .services-grid .service-card:nth-child(4) { grid-column: span 1; }
+
+  /* ── REACH ── */
+  .reach { background: var(--navy); }
+  .reach .section-title { color: var(--white); }
+  .reach .section-eyebrow { color: var(--gold); }
+  .reach .section-body { color: rgba(255,255,255,0.6); max-width: 600px; }
+
+  .reach-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .stat-block {
+    background: var(--navy);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* ── CASE STUDY ── */
+  .case { background: var(--cream); }
+
+  .case-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .case-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .metric-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+
+  .metric-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .metric-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .case-quote {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 3.5rem;
+    position: relative;
+  }
+
+  .quote-mark {
+    font-family: var(--serif);
+    font-size: 6rem;
+    color: var(--gold);
+    opacity: 0.25;
+    line-height: 1;
+    position: absolute;
+    top: 1.5rem;
+    left: 2.5rem;
+  }
+
+  .quote-text {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+  }
+
+  .quote-client {
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 7rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+
+  .cta-section .section-title { color: var(--white); text-align: center; max-width: 600px; margin: 0 auto 1.5rem; }
+  .cta-section .section-eyebrow { text-align: center; }
+
+  .cta-sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto 2.75rem;
+    line-height: 1.75;
+  }
+
+  .cta-contact {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-item {
+    text-align: center;
+  }
+
+  .contact-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .contact-value a {
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+
+  .contact-value a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080f1e;
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-logo span { color: var(--gold); opacity: 0.7; }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: heroFadeUp 0.7s ease 0.1s both; }
+  .hero-headline { animation: heroFadeUp 0.7s ease 0.25s both; }
+  .hero-sub { animation: heroFadeUp 0.7s ease 0.4s both; }
+  .hero-actions { animation: heroFadeUp 0.7s ease 0.55s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .hero-content { padding: 7rem 2rem 4rem; }
+    .about-grid,
+    .case-block,
+    .reach-header { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.5rem; }
+  }
+
+  @media (max-width: 560px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .case-metrics { grid-template-columns: 1fr 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kavalan<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reach">Our Reach</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Education Marketing &amp; Enrollment Growth</p>
+    <h1 class="hero-headline">
+      Unlocking enrollment growth,<br>
+      <em>tailored to Asian markets.</em>
+    </h1>
+    <p class="hero-sub">
+      We connect global education institutions with students, agents, and counselors across Taiwan and Southeast Asia — through digital strategy built on 15+ years of local expertise.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Discuss Your Goals</a>
+      <a href="#services" class="btn-outline">See Our Services</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-map-card">
+      <p class="map-label">Markets We Serve</p>
+      <ul class="market-list">
+        <li class="market-item">
+          <span class="market-dot"></span>
+          <span class="market-region">East Asia</span>
+          <span class="market-name">Taiwan</span>
+        </li>
+        <li class="market-item">
+          <span class="market-dot"></span>
+          <span class="market-region">SE Asia</span>
+          <span class="market-name">Vietnam</span>
+        </li>
+        <li class="market-item">
+          <span class="market-dot"></span>
+          <span class="market-region">SE Asia</span>
+          <span class="market-name">Cambodia</span>
+        </li>
+        <li class="market-item">
+          <span class="market-dot"></span>
+          <span class="market-region">SE Asia</span>
+          <span class="market-name">Myanmar</span>
+        </li>
+        <li class="market-item">
+          <span class="market-dot"></span>
+          <span class="market-region">SE Asia</span>
+          <span class="market-name">Thailand</span>
+        </li>
+      </ul>
+      <div class="hero-stats">
+        <div>
+          <span class="hero-stat-num">15+</span>
+          <span class="hero-stat-label">Years Experience</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">5,880+</span>
+          <span class="hero-stat-label">Database Contacts</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Strategic Media Buy</span>
+    <span>·</span>
+    <span>Newsletter Campaigns</span>
+    <span>·</span>
+    <span>Social Media Presence</span>
+    <span>·</span>
+    <span>Event Hosting</span>
+    <span>·</span>
+    <span>In-Country Support</span>
+    <span>·</span>
+    <span>Taiwan</span>
+    <span>·</span>
+    <span>Vietnam</span>
+    <span>·</span>
+    <span>Cambodia</span>
+    <span>·</span>
+    <span>Myanmar</span>
+    <span>·</span>
+    <span>Thailand</span>
+    <span>·</span>
+    <span>Strategic Media Buy</span>
+    <span>·</span>
+    <span>Newsletter Campaigns</span>
+    <span>·</span>
+    <span>Social Media Presence</span>
+    <span>·</span>
+    <span>Event Hosting</span>
+    <span>·</span>
+    <span>In-Country Support</span>
+    <span>·</span>
+    <span>Taiwan</span>
+    <span>·</span>
+    <span>Vietnam</span>
+    <span>·</span>
+    <span>Cambodia</span>
+    <span>·</span>
+    <span>Myanmar</span>
+    <span>·</span>
+    <span>Thailand</span>
+    <span>·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="section-eyebrow">About Kavalan Digital</p>
+        <h2 class="section-title">Formerly EnvisionRecruit.<br><em>Evolved for today.</em></h2>
+        <p class="section-body">
+          We are a digital marketing agency with over 15 years of experience serving education programs from the U.S., Canada, U.K., Europe, and Asia. Our clients are institutions — universities, business schools, and education brands — who trust us to grow their enrollment in markets we know intimately.
+        </p>
+        <p class="section-body" style="margin-top: 1rem;">
+          We are headquartered in Taipei, with on-the-ground presence across Vietnam, Cambodia, Myanmar, and Thailand. We work on a marketing-fee model: your success is our mandate, not a commission afterthought.
+        </p>
+      </div>
+      <div class="about-visual">
+        <div class="about-accent"></div>
+        <div class="about-card" style="position: relative; z-index: 1;">
+          <p class="about-card-title">Why Kavalan?</p>
+          <p>Kavalan is the indigenous name for the Yilan region of Taiwan — the place where we're rooted, and the spirit of local knowledge that we bring to every campaign.</p>
+          <p>We don't just translate your marketing. We localize your strategy: understanding the platforms, the gatekeepers, and the cultural nuances that move prospective students and their families toward a decision.</p>
+          <p style="margin-bottom: 0; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase;">Headquarters: Taipei, Taiwan</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="section-eyebrow">What We Do</p>
+    <h2 class="section-title">Five services.<br><em>One clear goal.</em></h2>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3 class="service-name">Strategic Media Buy</h3>
+        <p class="service-desc">Targeted paid campaigns across Facebook, Instagram, Google, LinkedIn, and premium print publications — with free localized creative and translation included.</p>
+        <p class="service-price">From USD 1,500 · Facebook & Google</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3 class="service-name">Newsletter Campaigns</h3>
+        <p class="service-desc">Multilingual email campaigns to our curated database of 4,500+ students, 380+ agents, 350 counselors, and 650 university contacts. We write, design, and report.</p>
+        <p class="service-price">From USD 1,800 · Single database</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3 class="service-name">Social Media Presence</h3>
+        <p class="service-desc">Full management of Facebook, Instagram, LinkedIn, and LINE channels — localized content, community management, and monthly performance reports.</p>
+        <p class="service-price">From USD 1,200 setup + USD 500/mo</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3 class="service-name">Event Hosting</h3>
+        <p class="service-desc">End-to-end event coordination: multi-school fairs, MBA coffee chats, 1:1 visits, workshops, and networking luncheons. We handle venue, catering, promotion, and reporting.</p>
+        <p class="service-price">From USD 3,000 · Joint events</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <h3 class="service-name">In-Country Support</h3>
+        <p class="service-desc">Full market-entry support via our partnership with 11th Fleet: entity setup, EOR, payroll outsourcing, recruitment, compliance, and localized market intelligence.</p>
+        <p class="service-price">Custom quote · Taiwan &amp; Vietnam</p>
+      </div>
+
+      <div class="service-card" style="background: var(--navy); display: flex; flex-direction: column; justify-content: center; align-items: flex-start;">
+        <p style="font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;">Ready to start?</p>
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.15rem; color: white; font-weight: 400; margin-bottom: 1.5rem; line-height: 1.4;">Let's design the right combination for your institution.</p>
+        <a href="#contact" class="btn-primary">Talk to Our Team</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REACH -->
+<section class="reach" id="reach">
+  <div class="container">
+    <div class="reach-header">
+      <div>
+        <p class="section-eyebrow">Our Database</p>
+        <h2 class="section-title">Direct access to<br><em>the right people.</em></h2>
+      </div>
+      <p class="section-body">
+        Over 15 years, we've built proprietary relationships with students, families, education agents, high-school counselors, and university contacts across our core markets.
+      </p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-block">
+        <span class="stat-num">4,500+</span>
+        <span class="stat-label">Students &amp; Prospective Applicants</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-num">380+</span>
+        <span class="stat-label">Education Agents</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-num">350</span>
+        <span class="stat-label">Counselors at Feeder High Schools</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-num">650</span>
+        <span class="stat-label">Contacts at Feeder Universities</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case">
+  <div class="container">
+    <div class="case-block">
+      <div>
+        <p class="section-eyebrow">Case Study</p>
+        <h2 class="section-title">GMAC Vietnam:<br><em>40× follower growth.</em></h2>
+        <p class="section-body">We managed the GMAC Vietnam Facebook Fanpage from 1,700 followers to over 666,000 — in under two years. The secret: deep localization, consistent community management, and data-driven content optimization.</p>
+
+        <div class="case-metrics">
+          <div class="metric-card">
+            <span class="metric-num">40×</span>
+            <span class="metric-label">Follower growth in 2 years</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-num">$0.48</span>
+            <span class="metric-label">Cost per new follower</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-num">$0.26</span>
+            <span class="metric-label">Cost per website visit</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-num">$0.05</span>
+            <span class="metric-label">Cost per Fanpage interaction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-quote">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">
+          The results speak for themselves — but what made the difference was a team that understood the Vietnamese market from the inside, not a playbook imported from somewhere else.
+        </p>
+        <p class="quote-client">GMAC Vietnam — Social Media Campaign</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-bg"></div>
+  <div class="container" style="position: relative; z-index: 2;">
+    <p class="section-eyebrow">Get in Touch</p>
+    <h2 class="section-title">Ready to grow enrollment<br><em>in Asia's education markets?</em></h2>
+    <p class="cta-sub">Tell us about your institution and your goals. We'll propose a tailored strategy — no generic packages, no guesswork.</p>
+    <a href="mailto:Inquiry@envisionrecruit.com" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">Email Our Team</a>
+
+    <div class="cta-contact">
+      <div class="contact-item">
+        <p class="contact-label">Email</p>
+        <p class="contact-value"><a href="mailto:Inquiry@envisionrecruit.com">Inquiry@envisionrecruit.com</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">Phone</p>
+        <p class="contact-value">+886-2-2764-6595 ext 327</p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">Headquarters</p>
+        <p class="contact-value">11F, No. 178, Sec 1, Keelung Rd, Taipei</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Kavalan<span>.</span>Digital</span>
+  <span class="footer-copy">© 2025 Kavalan Digital (formerly EnvisionRecruit). All rights reserved.</span>
+</footer>
+
+</body>
+</html>
