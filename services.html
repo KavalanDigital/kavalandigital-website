@@ -36,6 +36,8 @@
     padding: 0 2.5rem; display: flex; align-items: center;
     justify-content: space-between; height: 64px;
   }
+  .nav-logo { display: flex; align-items: center; }
+  .nav-logo img { height: 42px; width: auto; display: block; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: rgba(255,255,255,0.75); text-decoration: none;
@@ -206,14 +208,36 @@
 <body>
 
 <nav>
-  <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;"><svg width="44" height="44" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="j1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6CC6BE"/><stop offset="100%" stop-color="#007C89"/></linearGradient><linearGradient id="j2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8FE0D7"/><stop offset="100%" stop-color="#0D5F6B"/></linearGradient><linearGradient id="gd" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFC94D"/><stop offset="100%" stop-color="#D88B00"/></linearGradient></defs><circle cx="450" cy="370" r="190" fill="none" stroke="#1C9AA3" stroke-width="16"/><polygon points="450,95 485,210 450,185 415,210" fill="url(#gd)"/><polygon points="180,520 370,260 530,520" fill="url(#j1)"/><polygon points="180,520 300,400 370,260 330,520" fill="#45B7B0"/><polygon points="300,400 370,260 420,360 330,520" fill="#0A6C79"/><polygon points="330,520 420,360 530,520" fill="#0B5B68"/><polygon points="420,520 610,320 740,520" fill="url(#j2)"/><polygon points="420,520 520,410 610,320 590,520" fill="#57C9C1"/><polygon points="520,410 610,320 660,430 590,520" fill="#0A7380"/><polygon points="590,520 660,430 740,520" fill="#1C9AA3"/><ellipse cx="450" cy="545" rx="120" ry="8" fill="#7AD1CC" opacity="0.5"/></svg><div style="line-height:1;"><div style="font-family:Playfair Display,Georgia,serif;font-size:1.1rem;color:white;font-weight:600;letter-spacing:0.05em;">KAVALAN</div><div style="font-family:DM Sans,sans-serif;font-size:0.58rem;color:#c9a84c;letter-spacing:0.22em;margin-top:2px;">— DIGITAL —</div></div></a>
+  <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
+    <svg width="40" height="40" viewBox="0 0 900 860" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="jA" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6CC6BE"/><stop offset="100%" stop-color="#007C89"/></linearGradient>
+        <linearGradient id="jB" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8FE0D7"/><stop offset="100%" stop-color="#0D5F6B"/></linearGradient>
+        <linearGradient id="gA" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFC94D"/><stop offset="100%" stop-color="#D88B00"/></linearGradient>
+      </defs>
+      <circle cx="450" cy="390" r="220" fill="none" stroke="#1C9AA3" stroke-width="22"/>
+      <polygon points="450,100 490,230 450,200 410,230" fill="url(#gA)"/>
+      <polygon points="160,570 370,270 550,570" fill="url(#jA)"/>
+      <polygon points="160,570 300,420 370,270 320,570" fill="#45B7B0"/>
+      <polygon points="300,420 370,270 430,380 320,570" fill="#0A6C79"/>
+      <polygon points="320,570 430,380 550,570" fill="#0B5B68"/>
+      <polygon points="400,570 610,330 760,570" fill="url(#jB)"/>
+      <polygon points="400,570 520,430 610,330 580,570" fill="#57C9C1"/>
+      <polygon points="520,430 610,330 670,450 580,570" fill="#0A7380"/>
+      <polygon points="580,570 670,450 760,570" fill="#1C9AA3"/>
+      <ellipse cx="450" cy="600" rx="160" ry="10" fill="#7AD1CC" opacity="0.4"/>
+    </svg>
+    <div style="line-height:1.2;">
+      <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;font-weight:600;color:white;letter-spacing:0.06em;">KAVALAN</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:0.55rem;color:#c9a84c;letter-spacing:0.24em;">— DIGITAL —</div>
+    </div>
+  </a>
   <ul class="nav-links">
     <li><a href="services.html">Services</a></li>
     <li><a href="markets.html">Our Reach</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
-  </ul>
-</nav>
+  </ul></nav>
 
 <!-- HERO -->
 <div class="page-hero">
