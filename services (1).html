@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Kavalan Digital</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0d1f3c;
+    --navy-mid: #1a3358;
+    --navy-light: #243f6a;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f4ed;
+    --cream-dark: #ede8df;
+    --text-dark: #0d1f3c;
+    --text-mid: #3d5478;
+    --text-muted: #7a8fa8;
+    --white: #ffffff;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,31,60,0.97); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 0 2.5rem; display: flex; align-items: center;
+    justify-content: space-between; height: 64px;
+  }
+  .nav-logo { display: flex; align-items: center; }
+  .nav-logo img { height: 42px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 0.875rem; font-weight: 400; letter-spacing: 0.04em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy) !important;
+    padding: 0.45rem 1.2rem; border-radius: 2px; font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--navy); padding: 9rem 2.5rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,168,76,0.8) 39px, rgba(201,168,76,0.8) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,168,76,0.8) 39px, rgba(201,168,76,0.8) 40px);
+  }
+  .page-hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+  .page-eyebrow {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .page-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .page-hero h1 {
+    font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 400; color: var(--white); line-height: 1.15; margin-bottom: 1.5rem;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--gold-light); }
+  .page-hero-sub {
+    font-size: 1.05rem; color: rgba(255,255,255,0.6);
+    line-height: 1.75; max-width: 560px;
+  }
+
+  /* INTRO */
+  .intro-section { padding: 5rem 2.5rem; background: var(--white); }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .intro-text h2 {
+    font-family: var(--serif); font-size: 2rem; font-weight: 400;
+    color: var(--navy); line-height: 1.2; margin-bottom: 1.25rem;
+  }
+  .intro-text h2 em { font-style: italic; }
+  .intro-text p { font-size: 1rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
+  .intro-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--cream-dark); border: 1px solid var(--cream-dark); border-radius: 4px; overflow: hidden; }
+  .intro-stat { background: var(--white); padding: 1.75rem; }
+  .intro-stat-num { font-family: var(--serif); font-size: 2rem; color: var(--navy); display: block; margin-bottom: 0.25rem; }
+  .intro-stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.4; }
+
+  /* SERVICES LIST */
+  .services-section { padding: 5rem 2.5rem; background: var(--cream); }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-eyebrow {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400; color: var(--navy); line-height: 1.2;
+  }
+  .section-title em { font-style: italic; }
+
+  /* SERVICE CARDS */
+  .service-card {
+    background: var(--white); border: 1px solid var(--cream-dark);
+    border-radius: 4px; margin-bottom: 1.5px;
+    overflow: hidden; transition: box-shadow 0.2s;
+  }
+  .service-card:hover { box-shadow: 0 4px 24px rgba(13,31,60,0.08); }
+
+  .service-card-inner {
+    display: grid; grid-template-columns: 80px 1fr auto;
+    gap: 0; align-items: stretch;
+  }
+
+  .service-num-col {
+    background: var(--navy); display: flex; align-items: center;
+    justify-content: center; padding: 2rem 1rem;
+  }
+  .service-num {
+    font-family: var(--serif); font-size: 1.8rem; font-weight: 400;
+    color: rgba(255,255,255,0.25); writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .service-body { padding: 2rem 2.5rem; }
+  .service-tag {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .service-name {
+    font-family: var(--serif); font-size: 1.4rem; font-weight: 400;
+    color: var(--navy); margin-bottom: 0.75rem;
+  }
+  .service-desc { font-size: 0.92rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1.25rem; max-width: 580px; }
+
+  .service-features { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .service-feature {
+    font-size: 0.75rem; color: var(--text-mid);
+    background: var(--cream); border: 1px solid var(--cream-dark);
+    padding: 0.3rem 0.75rem; border-radius: 2px; letter-spacing: 0.04em;
+  }
+
+  .service-cta-col {
+    display: flex; flex-direction: column; align-items: flex-end;
+    justify-content: space-between; padding: 2rem;
+    border-left: 1px solid var(--cream-dark); min-width: 200px;
+  }
+  .service-price-label { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem; }
+  .service-price { font-family: var(--serif); font-size: 1.1rem; color: var(--navy); margin-bottom: 1.5rem; }
+  .service-link {
+    display: inline-block; background: var(--navy); color: var(--white);
+    text-decoration: none; padding: 0.7rem 1.5rem; border-radius: 2px;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: background 0.2s; white-space: nowrap;
+  }
+  .service-link:hover { background: var(--navy-mid); }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--navy); padding: 6rem 2.5rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .cta-section .section-title { color: var(--white); max-width: 560px; margin: 0 auto 1.5rem; text-align: center; }
+  .cta-section .section-eyebrow { text-align: center; }
+  .cta-sub { color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 440px; margin: 0 auto 2.5rem; line-height: 1.75; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy); text-decoration: none;
+    padding: 0.95rem 2.5rem; font-size: 0.95rem; font-weight: 500;
+    letter-spacing: 0.04em; border-radius: 2px; display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: #080f1e; padding: 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.35); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .service-card-inner { grid-template-columns: 1fr; }
+    .service-num-col { display: none; }
+    .service-cta-col { border-left: none; border-top: 1px solid var(--cream-dark); align-items: flex-start; flex-direction: row; align-items: center; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
+    <svg width="40" height="40" viewBox="0 0 900 860" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="jA" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6CC6BE"/><stop offset="100%" stop-color="#007C89"/></linearGradient>
+        <linearGradient id="jB" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8FE0D7"/><stop offset="100%" stop-color="#0D5F6B"/></linearGradient>
+        <linearGradient id="gA" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFC94D"/><stop offset="100%" stop-color="#D88B00"/></linearGradient>
+      </defs>
+      <circle cx="450" cy="390" r="220" fill="none" stroke="#1C9AA3" stroke-width="22"/>
+      <polygon points="450,100 490,230 450,200 410,230" fill="url(#gA)"/>
+      <polygon points="160,570 370,270 550,570" fill="url(#jA)"/>
+      <polygon points="160,570 300,420 370,270 320,570" fill="#45B7B0"/>
+      <polygon points="300,420 370,270 430,380 320,570" fill="#0A6C79"/>
+      <polygon points="320,570 430,380 550,570" fill="#0B5B68"/>
+      <polygon points="400,570 610,330 760,570" fill="url(#jB)"/>
+      <polygon points="400,570 520,430 610,330 580,570" fill="#57C9C1"/>
+      <polygon points="520,430 610,330 670,450 580,570" fill="#0A7380"/>
+      <polygon points="580,570 670,450 760,570" fill="#1C9AA3"/>
+      <ellipse cx="450" cy="600" rx="160" ry="10" fill="#7AD1CC" opacity="0.4"/>
+    </svg>
+    <div style="line-height:1.2;">
+      <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;font-weight:600;color:white;letter-spacing:0.06em;">KAVALAN</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:0.55rem;color:#c9a84c;letter-spacing:0.24em;">— DIGITAL —</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="markets.html">Our Reach</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+  </ul></nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-content">
+    <p class="page-eyebrow">What We Do</p>
+    <h1>Five services.<br><em>One clear goal.</em></h1>
+    <p class="page-hero-sub">We design and execute education marketing campaigns that reach the right students, agents, and counselors across Taiwan and Southeast Asia.</p>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro-section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <h2>Local expertise,<br><em>regional reach.</em></h2>
+        <p>Every market in Asia is different. The platforms students use, the gatekeepers who influence decisions, the timing that matters — all of it varies by country, city, and audience segment.</p>
+        <p>We've spent 15+ years building the relationships, the databases, and the local knowledge that makes the difference between a campaign that lands and one that doesn't.</p>
+      </div>
+      <div class="intro-stats">
+        <div class="intro-stat">
+          <span class="intro-stat-num">15+</span>
+          <span class="intro-stat-label">Years serving education clients in Asia</span>
+        </div>
+        <div class="intro-stat">
+          <span class="intro-stat-num">5,880+</span>
+          <span class="intro-stat-label">Contacts in our proprietary database</span>
+        </div>
+        <div class="intro-stat">
+          <span class="intro-stat-num">5</span>
+          <span class="intro-stat-label">Markets across East &amp; Southeast Asia</span>
+        </div>
+        <div class="intro-stat">
+          <span class="intro-stat-num">40×</span>
+          <span class="intro-stat-label">Follower growth for GMAC Vietnam in 2 years</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES LIST -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">Our Services</p>
+      <h2 class="section-title">Everything you need<br><em>to grow enrollment in Asia.</em></h2>
+    </div>
+
+    <!-- Service 01 -->
+    <div class="service-card">
+      <div class="service-card-inner">
+        <div class="service-num-col">
+          <span class="service-num">01</span>
+        </div>
+        <div class="service-body">
+          <p class="service-tag">Paid Media</p>
+          <h3 class="service-name">Strategic Media Buy</h3>
+          <p class="service-desc">Targeted paid campaigns across Facebook, Instagram, Google, LinkedIn, and premium print publications. We handle media selection, localized creative, and translation — so you reach the right students in the right language, on the channels they actually use.</p>
+          <div class="service-features">
+            <span class="service-feature">Facebook & Instagram</span>
+            <span class="service-feature">Google Ads & GDN</span>
+            <span class="service-feature">LinkedIn</span>
+            <span class="service-feature">Print magazines</span>
+            <span class="service-feature">Online advertorials</span>
+            <span class="service-feature">Free localized creative</span>
+            <span class="service-feature">Free translation (up to 400 words)</span>
+            <span class="service-feature">Campaign reporting</span>
+          </div>
+        </div>
+        <div class="service-cta-col">
+          <div>
+            <p class="service-price-label">Starting from</p>
+            <p class="service-price">USD 1,500</p>
+          </div>
+          <a href="contact.html" class="service-link">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 02 -->
+    <div class="service-card">
+      <div class="service-card-inner">
+        <div class="service-num-col">
+          <span class="service-num">02</span>
+        </div>
+        <div class="service-body">
+          <p class="service-tag">Email Marketing</p>
+          <h3 class="service-name">Newsletter Campaigns</h3>
+          <p class="service-desc">Multilingual email campaigns delivered directly to our curated database of students, agents, counselors, and university contacts. We write, design, and analyze — you get a campaign report with key metrics and insights.</p>
+          <div class="service-features">
+            <span class="service-feature">4,500+ students</span>
+            <span class="service-feature">380+ agents</span>
+            <span class="service-feature">350 high school counselors</span>
+            <span class="service-feature">650 university contacts</span>
+            <span class="service-feature">Multilingual content</span>
+            <span class="service-feature">Custom design</span>
+            <span class="service-feature">Performance reporting</span>
+          </div>
+        </div>
+        <div class="service-cta-col">
+          <div>
+            <p class="service-price-label">Starting from</p>
+            <p class="service-price">USD 1,800<br><small style="font-size:0.75rem; color: var(--text-muted);">per campaign</small></p>
+          </div>
+          <a href="contact.html" class="service-link">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 03 -->
+    <div class="service-card">
+      <div class="service-card-inner">
+        <div class="service-num-col">
+          <span class="service-num">03</span>
+        </div>
+        <div class="service-body">
+          <p class="service-tag">Social Media</p>
+          <h3 class="service-name">Social Media Presence</h3>
+          <p class="service-desc">Full management of Facebook, Instagram, LinkedIn, and LINE channels — from setup and branding to localized content creation, community management, and monthly performance reports. Available as a one-time campaign or ongoing retainer.</p>
+          <div class="service-features">
+            <span class="service-feature">Facebook & Instagram</span>
+            <span class="service-feature">LinkedIn</span>
+            <span class="service-feature">LINE (Taiwan)</span>
+            <span class="service-feature">Page setup & branding</span>
+            <span class="service-feature">Localized content</span>
+            <span class="service-feature">Community management</span>
+            <span class="service-feature">Monthly reporting</span>
+            <span class="service-feature">15% discount for annual prepay</span>
+          </div>
+        </div>
+        <div class="service-cta-col">
+          <div>
+            <p class="service-price-label">Starting from</p>
+            <p class="service-price">USD 1,200 setup<br><small style="font-size:0.75rem; color: var(--text-muted);">+ USD 500/month</small></p>
+          </div>
+          <a href="contact.html" class="service-link">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 04 -->
+    <div class="service-card">
+      <div class="service-card-inner">
+        <div class="service-num-col">
+          <span class="service-num">04</span>
+        </div>
+        <div class="service-body">
+          <p class="service-tag">Events</p>
+          <h3 class="service-name">Event Hosting</h3>
+          <p class="service-desc">End-to-end event coordination — from multi-school education fairs and MBA coffee chats to private 1:1 visits, workshops, and networking luncheons. We handle venue, catering, invitations, promotion, and a comprehensive post-event report.</p>
+          <div class="service-features">
+            <span class="service-feature">Multi-school joint events</span>
+            <span class="service-feature">MBA Coffee Chat (Vietnam)</span>
+            <span class="service-feature">1:1 visits</span>
+            <span class="service-feature">Half/full-day workshops</span>
+            <span class="service-feature">Luncheon & cocktail events</span>
+            <span class="service-feature">Virtual events</span>
+            <span class="service-feature">Venue & catering coordination</span>
+            <span class="service-feature">Event promotion</span>
+          </div>
+        </div>
+        <div class="service-cta-col">
+          <div>
+            <p class="service-price-label">Starting from</p>
+            <p class="service-price">USD 3,000<br><small style="font-size:0.75rem; color: var(--text-muted);">joint events</small></p>
+          </div>
+          <a href="contact.html" class="service-link">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service 05 -->
+    <div class="service-card">
+      <div class="service-card-inner">
+        <div class="service-num-col">
+          <span class="service-num">05</span>
+        </div>
+        <div class="service-body">
+          <p class="service-tag">Market Entry</p>
+          <h3 class="service-name">In-Country Support</h3>
+          <p class="service-desc">Full market-entry support for institutions looking to establish a direct presence in Taiwan, Vietnam, or other Asian markets. In partnership with 11th Fleet, we provide a one-stop shop covering everything from entity setup to ongoing compliance.</p>
+          <div class="service-features">
+            <span class="service-feature">Entity setup</span>
+            <span class="service-feature">Employer of Record (EOR)</span>
+            <span class="service-feature">In-country recruitment</span>
+            <span class="service-feature">Payroll outsourcing</span>
+            <span class="service-feature">Labor contracts</span>
+            <span class="service-feature">Accounting & reporting</span>
+            <span class="service-feature">Tax & compliance</span>
+            <span class="service-feature">Market intelligence</span>
+          </div>
+        </div>
+        <div class="service-cta-col">
+          <div>
+            <p class="service-price-label">Pricing</p>
+            <p class="service-price">Custom quote</p>
+          </div>
+          <a href="contact.html" class="service-link">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="container" style="position: relative; z-index: 2;">
+    <p class="section-eyebrow">Ready to start?</p>
+    <h2 class="section-title">Not sure which service<br><em>is right for you?</em></h2>
+    <p class="cta-sub">We'll listen to your goals and recommend the right combination — no generic packages, no guesswork.</p>
+    <a href="contact.html" class="btn-primary">Talk to Our Team</a>
+  </div>
+</section>
+
+<footer>
+  <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; color:rgba(255,255,255,0.5);">Kavalan<span style="color:#c9a84c; opacity:0.7;">.</span>Digital</span>
+  <span class="footer-copy">© 2025 Kavalan Digital (formerly EnvisionRecruit). All rights reserved.</span>
+  <nav class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</footer>
+
+</body>
+</html>
